@@ -33,6 +33,7 @@ class Parse extends Command
     public function handle(Documentation $documentation)
     {
         $parser = $documentation->download()->parse();
+        $result = [];
 
         foreach ($parser->find('section.modunit div') as $header)
         {
@@ -44,13 +45,13 @@ class Parse extends Command
                 $url  = $pre->text();
             }
 
-            $method = "";
-            if ($span = $title->first('span.label') )
-            {
-                $method = $span->text();
-            }
+            // $method = "";
+            // if ($span = $title->first('span.label') )
+            // {
+            //                $method = $span->text();
+            // }
             $plans  = array_map( function ($plan){
-                return $plan->text();
+                return substr( $plan->text(), 0, 1);
             }, $title->find('li.plan'));
 
 
@@ -58,12 +59,18 @@ class Parse extends Command
 
             $text   = $title->text();
 
-            if ($method && $text && $url && $plans)
+            if ($text && $url && $plans)
             {
-                $this->line("<info>$text</info> $method $url (" . implode("Plans: ",$plans) . ")");
+                $result[] = [
+                    'plans'=> '<comment>' . implode("",$plans) . '</comment>',
+                    'url'=> "<info>$url</info>" . PHP_EOL . trim( $text ) . PHP_EOL,
+                    // 'description'=>$text,
+                ];
+                // $this->line("<info>$text</info> $url <comment>" . implode(", ",$plans) . "</comment>");
             }
         }
 
+        $this->table(['plans', 'url', 'description'], $result);
     }
 
     /**
