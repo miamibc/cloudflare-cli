@@ -2,36 +2,39 @@
 
 namespace App\Commands;
 
-use App\Client\Cloudflare;
+use App\Cloudflare\Client;
 use Illuminate\Console\Scheduling\Schedule;
 use LaravelZero\Framework\Commands\Command;
 
-class DevelopmentMode extends Command
+class User extends Command
 {
     /**
      * The signature of the command.
      *
      * @var string
      */
-    protected $signature = 'development_mode {zone : zone name} {value : can be on, off, y, n, yes, no}';
+    protected $signature = 'user';
 
     /**
      * The description of the command.
      *
      * @var string
      */
-    protected $description = 'Turn development more on/off';
+    protected $description = 'Get user information';
 
     /**
      * Execute the console command.
      *
-     * @param Cloudflare $cloudflare
+     * @param Client $client
      *
      * @return mixed
      */
-    public function handle( Cloudflare $cloudflare)
+    public function handle( Client $client)
     {
-        print_r( $cloudflare->development_mode( $this->argument('zone'), $this->argument( 'value') ) );
+        $response = $client->request('get', '/user');
+        $response->success()
+            ? $this->line( $response->resultJson() )
+            : $this->error( $response->errorsJson() );
     }
 
     /**

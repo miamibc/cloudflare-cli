@@ -5,7 +5,7 @@
  * @author Sergei Miami <miami@blackcrystal.net>
  */
 
-namespace App\Client;
+namespace App\Cloudflare;
 
 
 class Exception extends \Exception

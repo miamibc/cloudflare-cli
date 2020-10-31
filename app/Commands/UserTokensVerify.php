@@ -2,18 +2,18 @@
 
 namespace App\Commands;
 
-use App\Client\Cloudflare;
+use App\Cloudflare\Client;
 use Illuminate\Console\Scheduling\Schedule;
 use LaravelZero\Framework\Commands\Command;
 
-class Verify extends Command
+class UserTokensVerify extends Command
 {
     /**
      * The signature of the command.
      *
      * @var string
      */
-    protected $signature = 'verify';
+    protected $signature = 'user:tokens:verify';
 
     /**
      * The description of the command.
@@ -25,13 +25,16 @@ class Verify extends Command
     /**
      * Execute the console command.
      *
-     * @param Cloudflare $cloudflare
+     * @param Client $client
      *
      * @return mixed
      */
-    public function handle( Cloudflare $cloudflare)
+    public function handle( Client $client)
     {
-        print_r( $cloudflare->verify() );
+        $response = $client->request('get', '/user/tokens/verify');
+        $response->success()
+            ? $this->line( $response->resultJson() )
+            : $this->error( $response->errorsJson() );
     }
 
     /**
