@@ -35,8 +35,11 @@ class Parse extends Command
         $parser = $documentation->download()->parse();
         $result = [];
 
-        foreach ($parser->find('section.modunit div') as $header)
+        foreach ($parser->find('section.modunit') as $header)
         {
+            if (!$link = $header->first('a[id]')) continue;
+            $link = $link->attr('id');
+
             if (!$title = $header->first('h3.mod-title')) continue;
 
             $url = "";
@@ -51,26 +54,31 @@ class Parse extends Command
             //                $method = $span->text();
             // }
             $plans  = array_map( function ($plan){
-                return substr( $plan->text(), 0, 1);
+                return ucfirst( substr( $plan->text(), 0, 1) );
             }, $title->find('li.plan'));
-
 
             foreach ( $title->findInDocument('ul, span') as $element) $element->remove();
 
-            $text   = $title->text();
+            $text   = trim( $title->text() );
 
-            if ($text && $url && $plans)
+            $params = array_map( function ($item){
+                return $item->text();
+            }, $header->find('.object-definition-table .param-name strong'));
+
+            if (1)
             {
                 $result[] = [
-                    'plans'=> '<comment>' . implode("",$plans) . '</comment>',
-                    'url'=> "<info>$url</info>" . PHP_EOL . trim( $text ) . PHP_EOL,
-                    // 'description'=>$text,
+                    // 'ref'=>  "<comment>$link</comment>",
+                    'url'=>  "<info>$url</info>",
+                    'params'=> '<comment>' . implode(" ",$params) . '</comment>',
+                    'description'=>$text,
+                    //'plans'=> '<comment>' . implode("",$plans) . '</comment>',
                 ];
-                // $this->line("<info>$text</info> $url <comment>" . implode(", ",$plans) . "</comment>");
+                $this->line("<info>$url</info> <comment>" . implode(" ",$params) . "</comment> $text");
             }
         }
 
-        $this->table(['plans', 'url', 'description'], $result);
+        // $this->table(["url', 'description'], $result);
     }
 
     /**
