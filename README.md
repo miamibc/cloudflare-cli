@@ -62,7 +62,7 @@ To get list of all commands available, run cloudflare-cli without arguments
 cloudflare-cli
 ```
 
-To get more information on command, add `help` and command you need to get help for, for example
+To get more information on command, add `help` and `command` you need to get help for, for example
 
 ```
 cloudflare-cli help zones:settings:development_mode
