@@ -2,7 +2,10 @@
     <img title="Cloudflare" alt="Cloudflare" height="100" src="https://www.cloudflare.com/img/logo-cloudflare-dark.svg"/> cli
 </h1>
 
-Command-line client of [Cloudflare API](https://api.cloudflare.com/) written in PHP.
+Command-line client of [Cloudflare API](https://api.cloudflare.com/) written in PHP. Allows to:
+- Execute Cloudflare API commands, like listing available `zones` or changing `zones:settings:development_mode`
+- Parse documentation 
+- Generate commands from parsed information (Not completed yet)
 
 ## Start cloudflare-cli
 
@@ -68,8 +71,6 @@ To get more information on command, add `help` and `command` you need to get hel
 cloudflare-cli help zones:settings:development_mode
 ```
 
-
-
 ## Extend cloudflare-cli
 
 Project is made with help of [Laravel Zero](https://laravel-zero.com/) framework.
@@ -103,12 +104,18 @@ php cloudflare-cli make:command
 
 And add functionality to the new file in `app/Commands` directory.
 
-You can add `App\Cloudflare\Client $client` as a parameter of `handle()` method, to inject very simple and useful Cloudflare client, that performs authorization and has possibility to parse documentation.
+You can add `App\Cloudflare\Client $client` as a parameter of `handle()` method, to inject very simple and useful Cloudflare client, that performs authorization, results pagination and possibility to parse documentation.
+
+### Test
+
+To test components, run phpunit
+```
+php vendor/bin/phpunit
+```
 
 ### Create binary
 
 To create phar file, use this command and answer few questions
-
 ```
 php cloudflare-cli app:build
 ```
