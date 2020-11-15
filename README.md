@@ -122,6 +122,6 @@ Do you like this project? Support it by donating by [PayPal Donate](https://www.
 
 ## License
 
-Cloudflare-cli is an open-source software licensed under the [MIT license](https://github.com/miamibc/cloudflare-cli/blob/main/LICENSE.md).
+Cloudflare-cli is an open-source software licensed under the [MIT license](hhttps://opensource.org/licenses/MIT).
 
-<img src="https://img.shields.io/github/license/miamibc/cloudflare-cli?style=plastic" alt="License" />
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
