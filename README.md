@@ -1,5 +1,5 @@
 <h1>
-    <img title="Cloudflare" alt="Cloudflare" height="100" src="https://www.cloudflare.com/img/logo-cloudflare-dark.svg" style="margin-bottom: -10px; max-width:100%; vertical-align: bottom; height:100px;"/> cli
+    <img title="Cloudflare" alt="Cloudflare" height="100" src="https://www.cloudflare.com/img/logo-cloudflare-dark.svg"/> cli
 </h1>
 
 Command-line client of [Cloudflare API](https://api.cloudflare.com/) written in PHP.
