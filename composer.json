@@ -1,8 +1,8 @@
 {
-    "name": "laravel-zero/laravel-zero",
-    "description": "The Laravel Zero Framework.",
-    "keywords": ["framework", "laravel", "laravel zero", "console", "cli"],
-    "homepage": "https://laravel-zero.com",
+    "name": "miamibc/cloudflare-cli",
+    "description": "Cloudflare command-line client",
+    "keywords": ["cloudflare","client","cli","api"],
+    "homepage": "https://blackcrystal.net/en/project/cloudflare-cli",
     "type": "project",
     "license": "MIT",
     "support": {
@@ -11,8 +11,8 @@
     },
     "authors": [
         {
-            "name": "Nuno Maduro",
-            "email": "enunomaduro@gmail.com"
+            "name": "Sergei Miami",
+            "email": "miami@blackcrystal.net"
         }
     ],
     "require": {

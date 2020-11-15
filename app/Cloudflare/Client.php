@@ -17,7 +17,7 @@ class Client
     public function __construct()
     {
         $this->client = Http::baseUrl('https://api.cloudflare.com/client/v4')
-                            ->withToken(env('API_TOKEN'))
+                            ->withToken(env('CLOUDFLARE_API_TOKEN'))
                             ->contentType('application/json')
                             ->accept('application/json')
                             ->timeout(2)

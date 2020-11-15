@@ -1,37 +1,125 @@
-<p align="center">
-    <img title="Laravel Zero" height="100" src="https://raw.githubusercontent.com/laravel-zero/docs/master/images/logo/laravel-zero-readme.png" />
-</p>
+<h1>
+    <img title="Cloudflare" alt="Cloudflare" height="100" src="https://www.cloudflare.com/img/logo-cloudflare-dark.svg" /> cli
+</h1>
 
-<p align="center">
-  <a href="https://github.com/laravel-zero/framework/actions"><img src="https://img.shields.io/github/workflow/status/laravel-zero/framework/Tests.svg" alt="Build Status"></img></a>
-  <a href="https://scrutinizer-ci.com/g/laravel-zero/framework"><img src="https://img.shields.io/scrutinizer/g/laravel-zero/framework.svg" alt="Quality Score"></img></a>
-  <a href="https://packagist.org/packages/laravel-zero/framework"><img src="https://img.shields.io/packagist/dt/laravel-zero/framework.svg" alt="Total Downloads"></a>
-  <a href="https://packagist.org/packages/laravel-zero/framework"><img src="https://img.shields.io/packagist/v/laravel-zero/framework.svg?label=stable" alt="Latest Stable Version"></a>
-  <a href="https://packagist.org/packages/laravel-zero/framework"><img src="https://img.shields.io/packagist/l/laravel-zero/framework.svg" alt="License"></a>
-</p>
+Command-line client of [Cloudflare API](https://api.cloudflare.com/) written in PHP.
 
-<h4> <center>This is a <bold>community project</bold> and not an official Laravel one </center></h4>
+# Starting with cloudflare-cli
 
-Laravel Zero was created by, and is maintained by [Nuno Maduro](https://github.com/nunomaduro), and is a micro-framework that provides an elegant starting point for your console application. It is an **unofficial** and customized version of Laravel optimized for building command-line applications.
+Download the latest binary 
+```
+wget https://raw.githubusercontent.com/miamibc/cloudflare-cli/main/build/cloudflare-cli
+```
 
-- Built on top of the [Laravel](https://laravel.com) components.
-- Optional installation of Laravel [Eloquent](https://laravel-zero.com/docs/database/), Laravel [Logging](https://laravel-zero.com/docs/logging/) and many others.
-- Supports interactive [menus](https://laravel-zero.com/docs/build-interactive-menus/) and [desktop notifications](https://laravel-zero.com/docs/send-desktop-notifications/) on Linux, Windows & MacOS.
-- Ships with a [Scheduler](https://laravel-zero.com/docs/task-scheduling/) and  a [Standalone Compiler](https://laravel-zero.com/docs/build-a-standalone-application/).
-- Integration with [Collision](https://github.com/nunomaduro/collision) - Beautiful error reporting
+### Create API token
 
-------
+To work with Cloudflare from `cloudflare-cli`, you need to [create an API token](https://developers.cloudflare.com/api/tokens/create) with all necessary permissions and pass it as env variable. 
 
-## Documentation
+You have at least two ways do it (change xxxxxx to your API token):
 
-For full documentation, visit [laravel-zero.com](https://laravel-zero.com/).
+1. Create `.env` file with `CLOUDFLARE_API_TOKEN` variable set
+    ```
+    echo 'CLOUDFLARE_API_TOKEN="xxxxxx"' > .env
+    ```
 
-## Support the development
-**Do you like this project? Support it by donating**
+2. Or export as a Bash variable
+    
+    ```
+    export CLOUDFLARE_API_TOKEN="xxxxxx"
+    ```
 
-- PayPal: [Donate](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=66BYDWAT92N6L)
-- Patreon: [Donate](https://www.patreon.com/nunomaduro)
+Now you can check, is it set properly, by running
+```
+php cloudflare-cli.phar user:tokens:verify
+```
 
-## License
+If you done setup correctly, you'll id and status of your API token.
 
-Laravel Zero is an open-source software licensed under the [MIT license](https://github.com/laravel-zero/laravel-zero/blob/stable/LICENSE.md).
+### Make it executable and globally accessible
+
+You can make cloudflare-cli executable and execute from bash
+```
+chmod a+x cloudflare-cli.phar
+./cloudflare-cli.phar
+```
+
+After that you can make it visible system-wide
+```
+sudo ln -s $(pwd)/cloudflare-cli.phar /usr/bin/cloudflare-cli
+```
+
+And run as a simple bash command
+
+```
+cloudflare-cli
+```
+
+# Work with cloudflare-cli
+
+To get list of all commands available, run cloudflare-cli without arguments
+
+```
+cloudflare-cli
+```
+
+To get more information on command, add `help` and command you need to get help for, for example
+
+```
+cloudflare-cli help zones:settings:development_mode
+```
+
+
+
+# Extend cloudflare-cli
+
+This project is made with help of [Laravel Zero](https://laravel-zero.com/) framework.
+
+### Install
+
+Clone the project source code
+
+```
+git clone https://github.com/miamibc/cloudflare-cli.git
+```
+
+Go to the created directory
+
+```
+cd cloudflare-cli
+```
+
+Install composer dependencies
+
+```
+composer install
+```
+
+### Add new command
+
+Create new command
+```
+php cloudflare-cli make:command
+```
+
+And add functionality to the new file in `app/Commands` directory
+
+### Create binary
+
+To create phar file, use this command and answer few questions
+
+```
+php cloudflare-cli app:build
+```
+
+Built phar file can be found in `binary` folder.
+
+
+# Support the development
+
+Do you like this project? Support it by donating by [PayPal Donate](https://www.paypal.com/donate?hosted_button_id=VWYANQXDSRRG4)
+
+# License
+
+Cloudflare-cli is an open-source software licensed under the [MIT license](https://github.com/miamibc/cloudflare-cli/blob/main/LICENSE.md).
+
+<img src="https://img.shields.io/github/license/miamibc/cloudflare-cli?style=plastic" alt="License" />
