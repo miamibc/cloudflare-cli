@@ -33,7 +33,7 @@ Now you can check, is it set properly, by running
 php cloudflare-cli.phar user:tokens:verify
 ```
 
-If you done setup correctly, you'll id and status of your API token.
+If you did setup correctly, you will see `id` and `status` of your API token.
 
 ### Make it executable and globally accessible
 
@@ -48,7 +48,7 @@ After that you can make it visible system-wide
 sudo ln -s $(pwd)/cloudflare-cli.phar /usr/bin/cloudflare-cli
 ```
 
-And run as a simple bash command
+Now you can run it as a simple bash command from any directory
 
 ```
 cloudflare-cli
@@ -72,7 +72,7 @@ cloudflare-cli help zones:settings:development_mode
 
 ## Extend cloudflare-cli
 
-This project is made with help of [Laravel Zero](https://laravel-zero.com/) framework.
+Project is made with help of [Laravel Zero](https://laravel-zero.com/) framework.
 
 ### Install
 
