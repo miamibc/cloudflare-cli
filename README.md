@@ -1,10 +1,10 @@
 <h1>
-    <img title="Cloudflare" alt="Cloudflare" height="100" src="https://www.cloudflare.com/img/logo-cloudflare-dark.svg" /> cli
+    <img title="Cloudflare" alt="Cloudflare" height="100" src="https://www.cloudflare.com/img/logo-cloudflare-dark.svg" style="margin-bottom: -10px; max-width:100%; vertical-align: bottom; height:100px;"/> cli
 </h1>
 
 Command-line client of [Cloudflare API](https://api.cloudflare.com/) written in PHP.
 
-# Starting with cloudflare-cli
+## Start cloudflare-cli
 
 Download the latest binary 
 ```
@@ -54,7 +54,7 @@ And run as a simple bash command
 cloudflare-cli
 ```
 
-# Work with cloudflare-cli
+## Work with cloudflare-cli
 
 To get list of all commands available, run cloudflare-cli without arguments
 
@@ -70,7 +70,7 @@ cloudflare-cli help zones:settings:development_mode
 
 
 
-# Extend cloudflare-cli
+## Extend cloudflare-cli
 
 This project is made with help of [Laravel Zero](https://laravel-zero.com/) framework.
 
@@ -114,11 +114,11 @@ php cloudflare-cli app:build
 Built phar file can be found in `binary` folder.
 
 
-# Support the development
+## Support the development
 
 Do you like this project? Support it by donating by [PayPal Donate](https://www.paypal.com/donate?hosted_button_id=VWYANQXDSRRG4)
 
-# License
+## License
 
 Cloudflare-cli is an open-source software licensed under the [MIT license](https://github.com/miamibc/cloudflare-cli/blob/main/LICENSE.md).
 
