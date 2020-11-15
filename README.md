@@ -101,7 +101,9 @@ Create new command
 php cloudflare-cli make:command
 ```
 
-And add functionality to the new file in `app/Commands` directory
+And add functionality to the new file in `app/Commands` directory.
+
+You can add `App\Cloudflare\Client $client` as a parameter of `handle()` method, to inject very simple and useful Cloudflare client, that performs authorization and has possibility to parse documentation.
 
 ### Create binary
 
