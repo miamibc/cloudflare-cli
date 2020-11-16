@@ -40,18 +40,13 @@ If you did setup correctly, you will see `id` and `status` of your API token.
 
 ### Make it executable and globally accessible
 
-You can make cloudflare-cli executable and execute from bash
+Additionnaly, you can make cloudflare-cli executable and visible system-wide
 ```
 chmod a+x cloudflare-cli
-./cloudflare-cli
-```
-
-After that you can make it visible system-wide
-```
 sudo ln -s $(pwd)/cloudflare-cli /usr/bin/
 ```
 
-Now you can run it as a simple bash command from any directory
+Now you can run it as a simple command, from any directory
 
 ```
 cloudflare-cli
