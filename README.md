@@ -11,7 +11,7 @@ Command-line client of [Cloudflare API](https://api.cloudflare.com/) written in 
 
 Download the latest binary 
 ```
-wget https://raw.githubusercontent.com/miamibc/cloudflare-cli/main/build/cloudflare-cli
+wget https://raw.githubusercontent.com/miamibc/cloudflare-cli/main/builds/cloudflare-cli
 ```
 
 ### Create API token
@@ -33,7 +33,7 @@ You have at least two ways do it (change xxxxxx to your API token):
 
 Now you can check, is it set properly, by running
 ```
-php cloudflare-cli.phar user:tokens:verify
+php cloudflare-cli user:tokens:verify
 ```
 
 If you did setup correctly, you will see `id` and `status` of your API token.
@@ -42,13 +42,13 @@ If you did setup correctly, you will see `id` and `status` of your API token.
 
 You can make cloudflare-cli executable and execute from bash
 ```
-chmod a+x cloudflare-cli.phar
-./cloudflare-cli.phar
+chmod a+x cloudflare-cli
+./cloudflare-cli
 ```
 
 After that you can make it visible system-wide
 ```
-sudo ln -s $(pwd)/cloudflare-cli.phar /usr/bin/cloudflare-cli
+sudo ln -s $(pwd)/cloudflare-cli /usr/bin/
 ```
 
 Now you can run it as a simple bash command from any directory
@@ -62,13 +62,13 @@ cloudflare-cli
 To get list of all commands available, run cloudflare-cli without arguments
 
 ```
-cloudflare-cli
+php cloudflare-cli
 ```
 
 To get more information on command, add `help` and `command` you need to get help for, for example
 
 ```
-cloudflare-cli help zones:settings:development_mode
+php cloudflare-cli help zones:settings:development_mode
 ```
 
 ## Extend cloudflare-cli
@@ -120,7 +120,7 @@ To create phar file, use this command and answer few questions
 php cloudflare-cli app:build
 ```
 
-Built phar file can be found in `binary` folder.
+Built binary (PHAR) file can be found in `builds` folder.
 
 
 ## Support the development
