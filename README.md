@@ -57,13 +57,13 @@ cloudflare-cli
 To get list of all commands available, run cloudflare-cli without arguments
 
 ```
-php cloudflare-cli
+cloudflare-cli
 ```
 
 To get more information on command, add `help` and `command` you need to get help for, for example
 
 ```
-php cloudflare-cli help zones:settings:development_mode
+cloudflare-cli help zones:settings:development_mode
 ```
 
 ## Extend cloudflare-cli
