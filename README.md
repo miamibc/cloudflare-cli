@@ -7,6 +7,8 @@ Command-line client of [Cloudflare API](https://api.cloudflare.com/) written in 
 - Parse documentation 
 - Generate commands from parsed information (Not completed yet)
 
+![Laravel](https://github.com/miamibc/cloudflare-cli/workflows/Laravel/badge.svg) 
+
 ## Start cloudflare-cli
 
 Download the latest binary 
