@@ -9,23 +9,28 @@ namespace App\Cloudflare;
 
 use DiDom\Document;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Storage;
 
 class Documentation
 {
 
     const FILENAME = 'documentation.html';
 
-    private $client, $parser;
+    private $client, $parser, $storage;
 
     public function __construct()
     {
         $this->client = Http::baseUrl('https://api.cloudflare.com');
+        $this->storage = Storage::disk();
     }
 
     public function download()
     {
-        if (!file_exists(self::FILENAME))
-            file_put_contents(self::FILENAME, $this->client->get('/'));
+        if (!$this->storage->exists(self::FILENAME))
+        {
+            $content = $this->client->get('/');
+            $this->storage->put(self::FILENAME, $content);
+        }
         return $this;
     }
 
@@ -33,7 +38,8 @@ class Documentation
     {
         if (is_null($this->parser))
         {
-            $this->parser = new Document(self::FILENAME,true);
+            $path = $this->storage->path(self::FILENAME);
+            $this->parser = new Document($path,true);
         }
         return $this->parser;
     }
